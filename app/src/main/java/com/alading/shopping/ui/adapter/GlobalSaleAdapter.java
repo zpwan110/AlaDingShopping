@@ -1,6 +1,7 @@
 package com.alading.shopping.ui.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Paint;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +15,8 @@ import com.alading.shopping.common.util.LoaderImage;
 import com.alading.shopping.modle.bean.GlobalSale;
 import com.alading.shopping.modle.bean.Product;
 import com.alading.shopping.modle.constant.HttpServerPort;
+import com.alading.shopping.ui.activity.ProductDetailsActivity;
+import com.alading.shopping.ui.activity.WebViewActivity;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -49,7 +52,7 @@ public class GlobalSaleAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int i, View view, ViewGroup viewGroup) {
+    public View getView(final int i, View view, ViewGroup viewGroup) {
         ViewHolder holder;
         if (view == null) {
             view = inflater.inflate(R.layout.home_global_sale_item, null);
@@ -70,6 +73,15 @@ public class GlobalSaleAdapter extends BaseAdapter {
         holder.mobile_name_prcie_d.setText(new BigDecimal(discount).setScale(1, BigDecimal.ROUND_HALF_UP) + " 折");
         holder.mobile_name_referencePrice.setText(String.format("¥%s", String.valueOf(_list.get(i).getProduct().getReferencePrice())));
         holder.mobile_name_referencePrice.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);
+
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent =new Intent(context, ProductDetailsActivity.class);
+                intent.putExtra("productId",_list.get(i).getFid());
+                context.startActivity(intent);
+            }
+        });
         return view;
     }
 

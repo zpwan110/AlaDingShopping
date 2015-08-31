@@ -42,7 +42,6 @@ public class ImagePagerActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_image_pager);
-        initImageLoader(this);
         Bundle bundle = getIntent().getExtras();
         List<ProductDetails.ProductImage> images = (List<ProductDetails.ProductImage>) bundle.getSerializable(IMAGES);
         int pagerPosition = bundle.getInt(IMAGE_POSITION, 0);
@@ -50,90 +49,40 @@ public class ImagePagerActivity extends Activity {
             pagerPosition = savedInstanceState.getInt(STATE_POSITION);
         }
         pager = (HackyViewPager) findViewById(R.id.pager);
-        pager.setAdapter(new ImagePagerAdapter(images,this));
+        pager.setAdapter(new SamplePagerAdapter(images,this));
         pager.setCurrentItem(pagerPosition);
 
     }
-
-    public  void initImageLoader(Context context) {
-        // This configuration tuning is custom. You can tune every option, you may tune some of them,
-        // or you can create default configuration by
-        //  ImageLoaderConfiguration.createDefault(this);
-        // method.
-        ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(context)
-                .threadPriority(Thread.NORM_PRIORITY - 2)
-                .denyCacheImageMultipleSizesInMemory()
-                .discCacheFileNameGenerator(new Md5FileNameGenerator())
-                .tasksProcessingOrder(QueueProcessingType.LIFO)
-                .writeDebugLogs() // Remove for release app
-                .build();
-        // Initialize ImageLoader with configuration.
-        ImageLoader.getInstance().init(config);
-    }
-
-
-    @Override
-    public void onSaveInstanceState(Bundle outState) {
-        outState.putInt(STATE_POSITION, pager.getCurrentItem());
-    }
-
-    private class ImagePagerAdapter extends PagerAdapter {
-
+    static class SamplePagerAdapter extends PagerAdapter {
+        private final Context mContext;
         private List<ProductDetails.ProductImage> images;
-        private LayoutInflater inflater;
-        private Context mContext;
-
-        ImagePagerAdapter(List<ProductDetails.ProductImage> images,Context context) {
+        public SamplePagerAdapter(List<ProductDetails.ProductImage> images,Context context) {
             this.images = images;
             this.mContext=context;
-            inflater = getLayoutInflater();
-        }
 
-        @Override
-        public void destroyItem(ViewGroup container, int position, Object object) {
-            ((ViewPager) container).removeView((View) object);
         }
-
-        @Override
-        public void finishUpdate(View container) {
-        }
-
         @Override
         public int getCount() {
             return images.size();
         }
 
         @Override
-        public Object instantiateItem(ViewGroup view, int position) {
-            View imageLayout = inflater.inflate(R.layout.item_pager_image, view, false);
-
-            PhotoView imageView = (PhotoView) imageLayout.findViewById(R.id.image);
-            final ProgressBar spinner = (ProgressBar) imageLayout.findViewById(R.id.loading);
-            PhotoView photoView = new PhotoView(view.getContext());
-//            photoView.setImageResource(sDrawables[position]);
+        public View instantiateItem(ViewGroup container, int position) {
+            PhotoView photoView = new PhotoView(container.getContext());
             LoaderImage.loadPhoto(HttpServerPort.PUBLIC_IMG+images.get(position).getImg(),photoView);
-            // Now just add PhotoView to ViewPager and return it
-            view.addView(photoView, LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
-            ((ViewPager) view).addView(imageLayout, 0);
-            return imageLayout;
+            container.addView(photoView, LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
+            return photoView;
+        }
+
+        @Override
+        public void destroyItem(ViewGroup container, int position, Object object) {
+            container.removeView((View) object);
         }
 
         @Override
         public boolean isViewFromObject(View view, Object object) {
-            return view.equals(object);
+            return view == object;
         }
 
-        @Override
-        public void restoreState(Parcelable state, ClassLoader loader) {
-        }
-
-        @Override
-        public Parcelable saveState() {
-            return null;
-        }
-
-        @Override
-        public void startUpdate(View container) {
-        }
     }
 }

@@ -20,7 +20,8 @@
             android:id="@+id/pull_refresh_scrollview"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:background="@color/gary_bg">
+            android:background="@color/gary_bg"
+            android:descendantFocusability="blocksDescendants">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -32,17 +33,23 @@
                     android:layout_height="120dp"
                     android:layout_alignParentTop="true" />
                 <ImageView
+                    android:id="@+id/ivPromise"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"
                     android:scaleType="fitXY"
                     android:src="@drawable/special_index" />
 
                 <com.alading.shopping.ui.appwidget.MyListView
                     android:id="@+id/mobileAdverts_List"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:cacheColorHint="#00000000"
+                    android:listSelector="#00000000"
+                    android:padding="5dp"
+                    />
 
                 <com.alading.shopping.ui.appwidget.MyGridView
                     android:id="@+id/entrance_sale"

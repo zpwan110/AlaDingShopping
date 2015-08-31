@@ -1,6 +1,7 @@
 package com.alading.shopping.ui.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import com.alading.shopping.R;
 import com.alading.shopping.common.util.LoaderImage;
 import com.alading.shopping.modle.bean.HomeMobileAdverts;
 import com.alading.shopping.modle.constant.HttpServerPort;
+import com.alading.shopping.ui.activity.WebViewActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,8 +47,8 @@ public class MobileAdvertsAdapter extends BaseAdapter{
     }
 
     @Override
-    public View getView(int i, View view, ViewGroup viewGroup) {
-        ViewHolder holder;
+    public View getView(final int i, View view, ViewGroup viewGroup) {
+        final ViewHolder holder;
         if (view == null){
             view = inflater.inflate(R.layout.home_mobileadverts_item,null);
             holder = new ViewHolder();
@@ -56,7 +58,15 @@ public class MobileAdvertsAdapter extends BaseAdapter{
             holder = (ViewHolder)view.getTag();
         }
         LoaderImage.loadPhoto(HttpServerPort.PUBLIC_IMG+_list.get(i).getIcon(), holder.mobile_Img);
-
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setClass(context, WebViewActivity.class);
+                intent.putExtra("weburl",_list.get(i).getContent());
+                context.startActivity(intent);
+            }
+        });
         return view;
     }
 

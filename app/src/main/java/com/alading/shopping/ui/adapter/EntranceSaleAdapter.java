@@ -1,6 +1,7 @@
 package com.alading.shopping.ui.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,7 @@ import com.alading.shopping.R;
 import com.alading.shopping.common.util.LoaderImage;
 import com.alading.shopping.modle.bean.HomeCategorys;
 import com.alading.shopping.modle.constant.HttpServerPort;
+import com.alading.shopping.ui.activity.WebViewActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,7 +50,7 @@ public class EntranceSaleAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int i, View convertView, ViewGroup viewGroup) {
+    public View getView(final int i, View convertView, ViewGroup viewGroup) {
         ViewHolder viewHolder = null;
         if (convertView == null) {
             convertView = inflater.inflate(R.layout.home_categorys_item, null);
@@ -63,6 +65,15 @@ public class EntranceSaleAdapter extends BaseAdapter {
                 HttpServerPort.PUBLIC_IMG +_list.get(i).getIcon(),
                 viewHolder.imageView);
         viewHolder.textView.setText(/*_list.get(i).getName()*/ "");
+        convertView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setClass(context, WebViewActivity.class);
+                intent.putExtra("weburl",_list.get(i).getInfo());
+                context.startActivity(intent);
+            }
+        });
         return convertView;
     }
 

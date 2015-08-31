@@ -1,8 +1,7 @@
 package com.alading.shopping.ui.fragment;
 
-import android.app.ActionBar;
-import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
@@ -13,9 +12,7 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.ScrollView;
 import android.widget.TextView;
-
 import com.alading.library.util.http.RequestParams;
 import com.alading.library.util.netstate.TANetWorkUtil;
 import com.alading.shopping.R;
@@ -28,7 +25,7 @@ import com.alading.shopping.modle.bean.HomeIndexAdverts;
 import com.alading.shopping.modle.bean.HomeMobileAdverts;
 import com.alading.shopping.modle.bean.Product;
 import com.alading.shopping.modle.constant.HttpRequestUrl;
-import com.alading.shopping.modle.constant.HttpServerPort;
+import com.alading.shopping.ui.activity.WebViewActivity;
 import com.alading.shopping.ui.adapter.BannerAdapter;
 import com.alading.shopping.ui.adapter.EntranceSaleAdapter;
 import com.alading.shopping.ui.adapter.GlobalSaleAdapter;
@@ -37,26 +34,19 @@ import com.alading.shopping.ui.adapter.MobileAdvertsAdapter;
 import com.alading.shopping.ui.appwidget.BannerPagerView;
 import com.alading.shopping.ui.appwidget.MyGridView;
 import com.alading.shopping.ui.appwidget.MyListView;
-import com.alading.shopping.ui.appwidget.NumberClock;
 import com.alading.shopping.ui.appwidget.PullToRefreshLayout;
 import com.alading.shopping.ui.appwidget.PullableScrollView;
 import com.alading.shopping.ui.base.BaseFragment;
-import com.google.gson.reflect.TypeToken;
-
-import org.apache.http.protocol.HttpRequestHandler;
-import org.json.JSONArray;
+import com.google.gson.reflect.TypeToken;;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by Administrator on 2015/8/26.
  */
-public class IndexFragment extends BaseFragment implements PullToRefreshLayout.OnRefreshListener {
+public class IndexFragment extends BaseFragment implements View.OnClickListener, PullToRefreshLayout.OnRefreshListener {
     private View mainView;
     private Context mContext;
     private boolean isfirst = true;
@@ -91,6 +81,7 @@ public class IndexFragment extends BaseFragment implements PullToRefreshLayout.O
     private GlobalSelectedAdapter qqSelectedAdapter;
     private MyListView qqSelectedList;
     private int refreshStatue =1;
+    private ImageView promiseImage;
 
 
     @Override
@@ -140,7 +131,9 @@ public class IndexFragment extends BaseFragment implements PullToRefreshLayout.O
         global_Deals_time = (TextView)mainView.findViewById(R.id.global_deals_time);
         qqSelectedList = (MyListView)mainView.findViewById(R.id.global_list);
 
+        promiseImage = (ImageView)mainView.findViewById(R.id.ivPromise);
         mRefreshView.setOnRefreshListener(this);
+        promiseImage.setOnClickListener(this);
 
         maAdapter = new MobileAdvertsAdapter(mContext,mobileAdvertsList);
         categorysAdapter = new EntranceSaleAdapter(mContext,categorysList);
@@ -195,7 +188,19 @@ public class IndexFragment extends BaseFragment implements PullToRefreshLayout.O
     private View initDot() {
         return LayoutInflater.from(mContext).inflate(R.layout.dot_layout, null);
     }
-
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.ivPromise:
+                if(indexFirstLineUrl!=null){
+                    Intent intent = new Intent();
+                    intent.setClass(mContext, WebViewActivity.class);
+                    intent.putExtra("weburl",indexFirstLineUrl);
+                    startActivity(intent);
+                }
+                break;
+        }
+    }
     /**
      * 首页
      */
@@ -229,12 +234,13 @@ public class IndexFragment extends BaseFragment implements PullToRefreshLayout.O
                 mRefreshView.loadmoreFinish(PullToRefreshLayout.FAIL);
             }
         }
-
     }
 
 
     private void initData() {
-        initBannerPager(bannerAdverts);//banner广告
+        if(bannerAdverts.size()>0){
+            initBannerPager(bannerAdverts);//banner广告
+        }
         maAdapter.notifyDataSetChanged();
         categorysAdapter.notifyDataSetChanged();
         if(globalSaleDetail!=null){
@@ -409,4 +415,6 @@ public class IndexFragment extends BaseFragment implements PullToRefreshLayout.O
         startReqeustLoadMore();
         refreshStatue=2;
     }
+
+
 }
