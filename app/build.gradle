@@ -24,4 +24,7 @@ dependencies {
     compile 'com.android.support:appcompat-v7:22.2.0'
     compile project(':aladinglibrary')
     compile project(':library')
+    compile files('libs/weibosdkcore_v3.0.1.jar')
+    compile files('libs/open_sdk_r4889.jar')
+    compile files('libs/libammsdk.jar')
 }

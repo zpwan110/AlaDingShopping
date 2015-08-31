@@ -93,8 +93,10 @@ public class ProPhotoTextActivity extends BaseActivity implements OnClickListene
 		layoutInflater = LayoutInflater.from(ProPhotoTextActivity.this);
 		photoView = layoutInflater.inflate(R.layout.pro_photo, null);
 		webView = (WebView)photoView.findViewById(R.id.webViewPhoto);
+		phototext = phototext.replaceAll("<img", "<img width=\\\"100%\\\" ");
 		webView.loadData(phototext, "text/html", "UTF-8");
 		webSettings = webView.getSettings();
+
 		webSettings.setDisplayZoomControls(false);
 		webSettings.setSupportZoom(true);
 		webSettings.setBuiltInZoomControls(true);
@@ -102,9 +104,18 @@ public class ProPhotoTextActivity extends BaseActivity implements OnClickListene
 		webSettings.setJavaScriptEnabled(true);
 ////		//扩大比例的缩放
 		webSettings.setUseWideViewPort(true);
-////		//自适应屏幕
-//		webSettings.setLoadWithOverviewMode(true);
-		webView.setInitialScale(100);
+//////		//自适应屏幕
+		webSettings.setLoadWithOverviewMode(true);
+		DisplayMetrics metrics = new DisplayMetrics();
+		getWindowManager().getDefaultDisplay().getMetrics(metrics);
+		int mDensity = metrics.densityDpi;
+		if (mDensity == 120) {
+			webSettings.setDefaultZoom(WebSettings.ZoomDensity.CLOSE);
+		}else if (mDensity == 160) {
+			webSettings.setDefaultZoom(WebSettings.ZoomDensity.MEDIUM);
+		}else if (mDensity == 240) {
+			webSettings.setDefaultZoom(WebSettings.ZoomDensity.FAR);
+		}
 		paramView = layoutInflater.inflate(R.layout.pro_param, null);
 		paramListView = (ListView)paramView.findViewById(R.id.paramList);
 		tvPlace = (TextView)paramView.findViewById(R.id.tvPlace);

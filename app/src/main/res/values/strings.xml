@@ -107,5 +107,11 @@
 
     <!-- html -->
     <string name="html">
+
+        <!--微信分享-->
+        <string name="errcode_success">微信分享成功</string>
+	<string name="errcode_cancel">微信分享取消</string>
+	<string name="errcode_deny">微信分享被拒绝</string>
+	<string name="errcode_unknown">微信分享返回</string>
 </string>
 </resources>
