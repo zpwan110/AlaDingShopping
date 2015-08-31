@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    >
+    <include layout="@layout/title_layout"
+        />
+    <com.alading.shopping.ui.appwidget.MyPagerView
+        android:layout_above="@+id/menu_bottom"
+        android:id="@+id/contentLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="10" >
+    </com.alading.shopping.ui.appwidget.MyPagerView>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="0.5dp"
+        android:layout_above="@+id/menu_bottom"
+        android:background="@color/gray" />
+
+    <LinearLayout
+        android:id="@+id/menu_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_alignParentBottom="true"
+        android:background="@android:color/white"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:baselineAligned="false">
+
+        <ImageView
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:id="@+id/iv_index"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:scaleType="center"
+            android:src="@drawable/sea_normal"
+            />
+
+
+        <ImageView
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:id="@+id/iv_shopcar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:scaleType="center"
+            android:src="@drawable/shopping_cart_normal" />
+
+        <ImageView
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:id="@+id/iv_center"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:scaleType="center"
+            android:src="@drawable/aladdin_normal" />
+
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,60 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="font_edittext_normal_item">16sp</dimen>
+    <dimen name="font_login_item">16sp</dimen>
+
+    <!--注册-手机号码填写-->
+    <dimen name="rigister_icon_padding">12dp</dimen>
+    <dimen name="rigister_icon_padding_right">24dp</dimen>
+    <dimen name="font_normal_item">16sp</dimen>
+
+    <!-- 价格显示宽度 -->
+    <dimen name="price_widht">80dp</dimen>
+
+        <!--标题栏属性-->
+        <dimen name="actionbar_margin_right">8dp</dimen>
+        <dimen name="actionbar_margin_left">8dp</dimen>
+        <dimen name="font_actionbar_title_size">18sp</dimen>
+        <dimen name="item_input_height">56dp</dimen>
+
+        <!--我的-->
+        <dimen name="kaola_head_min_height">180dp</dimen>
+        <dimen name="text_size_15sp">15sp</dimen>
+        <dimen name="text_size_13sp">13sp</dimen>
+        <dimen name="kaola_separate_height">10dp</dimen>
+        <dimen name="kaola_item_padding_left">15dp</dimen>
+        <dimen name="kaola_item_padding_right">15dp</dimen>
+        <dimen name="kaola_item_min_height">45dp</dimen>
+        <dimen name="kaola_item_image_width">25dp</dimen>
+        <dimen name="kaola_item_image_height">25dp</dimen>
+        <dimen name="line_height">3px</dimen>
+        <dimen name="kaola_item_line_margin_left">52dp</dimen>
+
+        <!--购物车-->
+        <dimen name="shopping_padding_top">20dp</dimen>
+        <dimen name="shopping_padding_bottom">20dp</dimen>
+        <dimen name="shopping_padding_left">20dp</dimen>
+        <dimen name="shopping_margin_left">10dp</dimen>
+        <dimen name="shopping_margin_right">20dp</dimen>
+
+        <!--登陆注册-->
+        <dimen name="common_margin_normal">15dp</dimen>
+        <dimen name="common_margin_small">10dp</dimen>
+        <dimen name="text_size_18sp">18sp</dimen>
+
+    <dimen name="drop_down_list_header_padding_top">12dp</dimen>
+    <dimen name="drop_down_list_header_padding_bottom">15dp</dimen>
+    <dimen name="drop_down_list_header_release_min_distance">20dp</dimen>
+    <dimen name="drop_down_list_header_progress_bar_height">36dp</dimen>
+    <dimen name="drop_down_list_footer_progress_bar_height">36dp</dimen>
+    <dimen name="drop_down_list_footer_button_margin_left">8dp</dimen>
+    <dimen name="drop_down_list_footer_button_height">48dp</dimen>
+
+    <dimen name="indicator_right_padding">10dp</dimen>
+    <dimen name="indicator_corner_radius">12dp</dimen>
+    <dimen name="indicator_internal_padding">4dp</dimen>
+    <dimen name="header_footer_left_right_padding">24dp</dimen>
+    <dimen name="header_footer_top_bottom_padding">12dp</dimen>
+</resources>

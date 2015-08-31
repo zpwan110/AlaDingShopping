@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--全局-->
+    <color name="white">#ffffffff</color>
+    <color name="white_gray">#707c7c7c</color>
+
+
+    <color name="popup_bg">#80000000</color>
+    <color name="all_background_color">#F8F8F8</color>
+    <color name="black">#ff000000</color>
+    <color name="gray">#7c7c7c</color>
+    <color name="gray_w">#90ffffff</color>
+    <color name="font_input_dark">#4F6868</color>
+    <color name="font_hint_dark">#DDDDDD</color>
+    <color name="title_bg">#D937DA</color>
+
+    <!--我的-->
+    <color name="text_color_red">#ffd22147</color>
+    <color name="text_color_black">#ff333333</color>
+    <color name="login_bt_bg">#ffb21d3d</color>
+    <color name="click_gray">#ffeeeeee</color>
+    <color name="click_white">#ffffffff</color>
+    <color name="light_gray">#ffdddddd</color>
+    <color name="text_color_gray">#ff999999</color>
+
+    <!--购物车-->
+    <color name="shopcar_text_color_red">#D22147</color>
+    <color name="shopcar_text_color_bg">#FCF6DD</color>
+    <color name="selector_chat_normal">#b21d3d</color>
+    <color name="selector_chat_pressed">#90b21d3d</color>
+    <color name="slightgray">#ffcccccc</color>
+    <!-- 灰色背景 -->
+    <color name="gary_bg">#dcdcdc</color>
+    <!-- 金色 -->
+    <color name="golden">#B28247</color>
+    <!-- 浅金色 -->
+    <color name="light_golden">#C9A063</color>
+    <!-- 亮青色 -->
+    <color name="light_cyan">#e0ffff</color>
+    <!-- 亮肉色 -->
+    <color name="light_salmon">#E7A269</color>
+    <!-- 朱砂红 -->
+    <color name="vermilion">#7C2A32</color>
+
+    <!-- 透明白 -->
+    <color name="alpha_white">#88ffffff</color>
+    <!-- 深灰 -->
+    <color name="dark_gray">#b3b3b3</color>
+    <!-- 淡灰 -->
+    <color name="little_gray">#d7d7d7</color>
+    <!-- 浅赭石 -->
+    <color name="light_ochre">#bda236</color>
+
+    <color name="line">#dddddd</color>
+    <!-- 透明 -->
+    <color name="transparent">#00000000</color>
+    <!-- 黄 -->
+    <color name="yellow">#ffd900</color>
+    <!-- 淡黄 -->
+    <color name="light_yellow">#FFFDF3</color>
+    <!-- 浅黄色 -->
+    <color name="wheat">#f5deb3</color>
+    <!-- 棕 -->
+    <color name="brown">#956134</color>
+    <!-- 橙色 -->
+    <color name="orange">#ffa500</color>
+    <!-- 暗桔黄色 -->
+    <color name="darkorange">#ff8c00</color>
+    <!-- 暗蓝色 -->
+    <color name="darkblue">#00008b</color>
+    <!-- 亮蓝色 -->
+    <color name="lightblue">#add8e6</color>
+    <!-- 暗红色 -->
+    <color name="darkred">#8b0000</color>
+    <!-- 淡黄 -->
+    <color name="yellowish">#f4ede5</color>
+    <!-- 灰色 -->
+    <color name="not_gray">#b4b5b5</color>
+    <!-- 天蓝色 -->
+    <color name="azure">#1bb9e8</color>
+    <!-- 红 -->
+    <color name="red">#eb726f</color>
+    <!-- 大运动 橙色 -->
+    <color name="big_train">#f0ac5b</color>
+    <!-- 社交 紫色 -->
+    <color name="social">#8568ab</color>
+    <!-- 适应 黄色 -->
+    <color name="adapt">#fbca5a</color>
+    <!-- 手精细 蓝色 -->
+    <color name="hand_elaboration">#6cc5e8</color>
+    <!-- 语言 红色 -->
+    <color name="language">#eb7270</color>
+    <!-- 注意力 绿色 -->
+    <color name="attention">#78bf54</color>
+    <color name="btn_enable">#1d92af</color>
+    <color name="gray_bg">#e0dfdf</color>
+
+    <!-- 蓝灰色-->
+    <color name="blue_gray">#3e4156</color>
+    <color name="red_money">#ef6363</color>
+</resources>

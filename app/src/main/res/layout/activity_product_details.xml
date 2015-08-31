@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+<include
+    android:id="@+id/title_bar"
+    layout="@layout/title_layout"
+    android:layout_alignParentTop="true"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent"/>
+    <ScrollView
+        android:layout_below="@+id/title_bar"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none"
+        android:layout_above="@+id/ll_purchase">
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <include layout="@layout/banner_viewpagger"
+            android:layout_width="match_parent" android:layout_height="300dp"/>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white">
+                <RelativeLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="25dp"
+                    android:paddingLeft="10dp">
+                    <ImageView
+                        android:id="@+id/ivCountry"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:scaleType="centerCrop"
+                        android:layout_centerVertical="true"
+                        />
+                    <TextView
+                        android:paddingLeft="10dp"
+                        android:layout_toRightOf="@+id/ivCountry"
+                        android:id="@+id/tvWarehouse"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:layout_centerVertical="true"
+                        />
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_marginTop="6dp"
+                    android:id="@+id/tvProName"
+                    android:paddingLeft="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:text=""
+                    android:layout_marginBottom="20dp"/>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:paddingLeft="10dp">
+
+                    <TextView
+                        android:id="@+id/tvProPrice"
+                        android:layout_toRightOf="@+id/ivProPrice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:textSize="20sp"
+                        android:gravity="bottom"
+                        android:textColor="@color/red"
+                        android:text=""/>
+                    <TextView
+                        android:id="@+id/ivProPrice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="￥"
+                        android:textSize="13sp"
+                        android:textColor="@color/red"
+                        android:gravity="bottom"/>
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp">
+                    <TextView
+                        android:id="@+id/tvAlaPrice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="20dp"
+                        android:text=""/>
+                    <TextView
+                        android:layout_marginLeft="20dp"
+                        android:id="@+id/tvDomPrice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="20dp"
+
+                        android:text=""/>
+                </LinearLayout>
+
+            </LinearLayout>
+            <include
+                layout="@layout/activity_product_details_price"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:visibility="visible"
+                 />
+
+            <include layout="@layout/index_fragment_special_details" />
+        </LinearLayout>
+    </ScrollView>
+
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="0.5dp"
+        android:layout_above="@+id/ll_purchase"
+        android:background="@color/gray" />
+
+    <LinearLayout
+        android:id="@+id/ll_purchase"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:layout_alignParentBottom="true"
+        android:background="#ffffff">
+
+        <Button
+            android:id="@+id/purchase"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginLeft="10dp"
+            android:layout_gravity="center"
+            android:background="@drawable/btn_selecter_red_line"
+            android:text="立即购买"
+            android:padding="5dp"
+            android:textColor="#d936d9"
+            android:textSize="17sp" />
+
+        <Button
+            android:id="@+id/shopping_car"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:padding="5dp"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/purchase"
+            android:layout_gravity="center"
+            android:background="@drawable/btn_selecter_red_pink"
+            android:text="加入购物车"
+            android:textColor="@color/white"
+            android:textSize="17sp" />
+
+
+        <RelativeLayout
+            android:id="@+id/btn_shopping_car"
+            android:layout_width="wrap_content"
+            android:layout_marginRight="10dp"
+            android:layout_alignParentRight="true"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/goShopCar"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:padding="10dp"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/go_shooping_bag" />
+
+            <TextView
+                android:id="@+id/shopcar_num"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:layout_alignRight="@+id/goShopCar"
+                android:background="@drawable/shape_oval"
+                android:gravity="center"
+                android:textSize="10sp"
+                android:visibility="gone"
+                android:textColor="@android:color/white" />
+
+        </RelativeLayout>
+    </LinearLayout>
+</RelativeLayout>

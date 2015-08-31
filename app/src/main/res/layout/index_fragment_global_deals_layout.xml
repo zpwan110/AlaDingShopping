@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/global_linear1"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="10dp"
+    android:background="@android:color/white"
+    android:orientation="vertical"
+    android:visibility="visible">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="35.0dip"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="10dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="13.0dip"
+            android:src="@drawable/home_page_item_vertical_line" />
+
+        <TextView
+            android:id="@+id/global_deals"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:gravity="left|center"
+            android:textColor="#ff333333"
+            android:text="全球特卖"
+            android:textSize="12sp" />
+
+    </LinearLayout>
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <TextView
+        android:layout_alignParentTop="true"
+        android:id="@+id/global_deals_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:background="@anim/global_deals_shape"
+        android:gravity="center"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:textColor="@android:color/white"
+        android:textSize="10sp"
+        />
+    <ImageView
+        android:layout_below="@+id/global_deals_time"
+        android:layout_width="1dp"
+        android:layout_height="10dp"
+        android:layout_marginLeft="20dp"
+        android:background="@color/gray"/>
+</RelativeLayout>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/gray" />
+
+    <com.alading.shopping.ui.appwidget.MyListView
+        android:id="@+id/global_deals_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <!--android:listSelector="#00000000"
+    android:dividerHeight="10dp"
+    android:divider="@null"-->
+</LinearLayout>

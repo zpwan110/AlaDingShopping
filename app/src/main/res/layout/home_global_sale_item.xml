@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:paddingBottom="10dp">
+
+    <TextView
+        android:id="@+id/mobile_name"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="20dp"
+        android:layout_toLeftOf="@+id/global_img_spike"
+        android:ellipsize="end"
+        android:lines="1"
+        android:marqueeRepeatLimit="-1"
+        android:paddingRight="2dp"
+        android:text="澳"
+        android:textColor="#323232"
+        android:textSize="16sp" />
+
+    <LinearLayout
+        android:id="@+id/ll_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/mobile_name"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/mobile_name_prcie"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="¥99"
+            android:textColor="#323232"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/mobile_name_prcie_d"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="15dp"
+            android:background="@drawable/goods_activity_bg"
+            android:paddingLeft="10dp"
+            android:paddingRight="2dp"
+            android:text="5.7折"
+            android:textColor="#ffffff"
+            android:textSize="10sp" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/mobile_name_referencePrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ll_price"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="10dp"
+        android:text="¥99"
+        android:textColor="#646464"
+        android:textSize="14sp" />
+
+    <ImageView
+        android:id="@+id/img_phone_price"
+        android:layout_width="42dp"
+        android:layout_height="42dp"
+        android:layout_alignParentRight="true"
+        android:src="@drawable/phone_price" />
+
+    <ImageView
+        android:id="@+id/global_img_spike"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_marginTop="10dp"
+        android:layout_toLeftOf="@+id/img_phone_price"
+        android:scaleType="fitXY"
+        android:src="@drawable/choiceness" />
+
+</RelativeLayout>

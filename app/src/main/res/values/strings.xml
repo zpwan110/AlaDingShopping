@@ -1,0 +1,110 @@
+<resources>
+
+    <string name="title_section1">Section 1</string>
+    <string name="title_section2">Section 2</string>
+    <string name="title_section3">Section 3</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_example">Example action</string>
+
+
+    <string name="app_name">啊啦海购</string>
+    <string name="index_fragment_gridview_title">全球购</string>
+    <string name="shopcar_fragment_gridview_title">购物袋</string>
+    <string name="mycenter_fragment_gridview_title">我的</string>
+    <string name="index_main">首页</string>
+
+    <!--我的-->
+    <string name="waiting_comment">待评价</string>
+    <string name="waiting_payed">待付款</string>
+    <string name="waiting_received">待收货</string>
+    <string name="waiting_sended">待发货</string>
+    <string name="login_register">登录/注册</string>
+    <string name="my_coupon">我的优惠券</string>
+    <string name="my_order">我的订单</string>
+    <string name="address_manage">收货地址管理</string>
+    <string name="feed_back">帮助与反馈</string>
+    <string name="address_add">添加</string>
+    <string name="hot_line_phone">020-89166123</string>
+    <string name="hot_line_description">客服热线 每天 09:00-24:00</string>
+
+    <!--购物车-->
+    <string name="shop_shopping">去逛逛</string>
+    <string name="shop_shopping_null">购物车空空如也，赶紧去逛逛吧!</string>
+    <string name="shop_shopping_prompt">温馨提示：现在登录您可以同步电脑与手机购物车中的商品</string>
+
+    <!--登陆-->
+    <string name="activity_login">登陆</string>
+    <string name="error_name">账号不能为空</string>
+    <string name="error_pwd">密码不能为空</string>
+    <string name="login_username_hint">阿拉丁账号</string>
+    <string name="login_password_hint">密码</string>
+    <string name="title_activity_login">登 录</string>
+    <string name="login_forget_password">忘记密码</string>
+    <string name="login_register_user">注册</string>
+    <string name="login_select_third">或从以下方式登录</string>
+    <string name="login_new_password">设置新密码</string>
+    <string name="title_login_next">下一步</string>
+    <string name="bnt_ok">完成</string>
+    <string name="input_phone_number">输入新的电话号码</string>
+    <string name="register_user">注册新账号</string>
+    <string name="code_new">输入验证号</string>
+    <string name="user_info">用户信息</string>
+
+    <!--商品详情-->
+    <string name="product">商品详情</string>
+    <string name="product_show">确认购买</string>
+    <string name="destination">杭州</string>
+    <string name="phototext">图文详情</string>
+
+    <!--购物车-->
+    <string name="shopping_car">购物袋</string>
+    <string name="condirm_order">确认订单</string>
+    <string name="condirm_submit_order">确认订单</string>
+
+    <!--用户评价-->
+    <string name="user_rating">用户评价</string>
+    <string name="view_product_details">产品参数</string>
+    <string name="myorder_num">共 %s 件  实付:</string>
+    <string name="myorder_price">¥ %s.00</string>
+
+
+    <!--我的订单-->
+    <string name="my_center_order_product">订单详情</string>
+    <string name="firm_order">订单支付</string>
+
+    <!--反馈-->
+    <string name="error_feed">提出的建议不能为空</string>
+    <string name="error_phone_null">手机号码输入为空</string>
+    <string name="error_phone">手机号码输入不正确</string>
+
+
+    <!--个人设置-->
+    <string name="user_center">个人设置</string>
+    <string name="user_push">推送设置</string>
+    <string name="user_pwd_set">修改密码</string>
+    <string name="user_about">关于阿拉海购</string>
+    <string name="user_version">版本号 v%s</string>
+
+    <!-- 刷新状态 -->
+    <string name="pull_to_refresh">下拉刷新</string>
+    <string name="release_to_refresh">释放立即刷新</string>
+    <string name="refreshing">正在刷新…</string>
+    <string name="refresh_succeed">刷新成功</string>
+    <string name="refresh_fail">刷新失败</string>
+    <string name="pullup_to_load">上拉加载更多</string>
+    <string name="release_to_load">释放立即加载</string>
+    <string name="loading">正在加载…</string>
+    <string name="load_succeed">加载成功</string>
+    <string name="load_fail">加载失败</string>
+    <string name="load_no">已无更多数据</string>
+
+    <!-- crash日志 -->
+    <string name="crashMeessage">程序停止运行</string>
+
+    <!-- html -->
+    <string name="html">
+</string>
+</resources>

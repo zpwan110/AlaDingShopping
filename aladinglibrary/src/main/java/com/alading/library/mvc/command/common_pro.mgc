@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ClassDiagram>
+    <Class name="com.alading.library.mvc.common.TAIResponseListener"
+        x="107" y="370">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+    <Class name="com.alading.library.mvc.command.TAThreadPool" x="782" y="318">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Association
+            destinationClassName="com.alading.library.mvc.command.TACommandThread"
+            endpointName="threads[]" kind="Simple"/>
+        <Communication destinationClassName="com.alading.library.mvc.command.TACommandThread"/>
+    </Class>
+    <Class name="com.alading.library.mvc.command.TACommand" x="378" y="423">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="com.alading.library.mvc.command.TABaseCommand"/>
+        <Association
+            destinationClassName="com.alading.library.mvc.common.TAIResponseListener"
+            endpointName="listener" kind="Simple"/>
+        <Communication destinationClassName="com.alading.library.mvc.common.TAIResponseListener"/>
+        <Communication destinationClassName="com.alading.library.mvc.command.TABaseCommand"/>
+        <Communication destinationClassName="com.alading.library.mvc.common.TAResponse"/>
+    </Class>
+    <Class name="com.alading.library.mvc.command.TABaseCommand" x="363" y="44">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="com.alading.library.mvc.command.TAICommand"/>
+        <Association
+            destinationClassName="com.alading.library.mvc.common.TAResponse"
+            endpointName="response" kind="Simple"/>
+        <Association
+            destinationClassName="com.alading.library.mvc.common.TAIResponseListener"
+            endpointName="responseListener" kind="Simple"/>
+        <Association
+            destinationClassName="com.alading.library.mvc.common.TARequest"
+            endpointName="request" kind="Simple"/>
+    </Class>
+    <Class name="com.alading.library.mvc.command.TACommandQueue"
+        x="1038" y="528">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+    <Class name="com.alading.library.TAApplication" x="-670" y="502">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="com.alading.library.mvc.common.TAIResponseListener"/>
+        <Association
+            destinationClassName="com.alading.library.mvc.controller.NavigationDirection"
+            endpointName="currentNavigationDirection" kind="Simple"/>
+        <Association
+            destinationClassName="com.alading.library.TAActivity"
+            endpointName="currentActivity" kind="Simple"/>
+        <Association
+            destinationClassName="com.alading.library.TAAppManager"
+            endpointName="mAppManager" kind="Simple"/>
+        <Association
+            destinationClassName="com.alading.library.mvc.command.TACommandExecutor"
+            endpointName="mCommandExecutor" kind="Simple"/>
+        <Communication destinationClassName="com.alading.library.mvc.common.TARequest"/>
+        <Communication destinationClassName="com.alading.library.TAAppManager"/>
+        <Communication destinationClassName="com.alading.library.mvc.common.TAResponse"/>
+        <Communication destinationClassName="com.alading.library.TAActivity"/>
+        <Communication destinationClassName="com.alading.library.mvc.controller.ActivityStackInfo"/>
+        <Communication destinationClassName="com.alading.library.mvc.command.TACommandExecutor"/>
+    </Class>
+    <Class name="com.alading.library.mvc.command.TACommandExecutor"
+        x="-437" y="33">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Communication destinationClassName="com.alading.library.mvc.command.TACommandQueueManager"/>
+        <Communication destinationClassName="com.alading.library.mvc.command.TAICommand"/>
+    </Class>
+    <Class name="com.alading.library.mvc.controller.NavigationDirection"
+        x="16" y="572">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+    <Class name="com.alading.library.mvc.command.TACommandQueueManager"
+        x="748" y="537">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Association
+            destinationClassName="com.alading.library.mvc.command.TACommandQueue"
+            endpointName="queue" kind="Simple"/>
+        <Association
+            destinationClassName="com.alading.library.mvc.command.TAThreadPool"
+            endpointName="pool" kind="Simple"/>
+        <Communication destinationClassName="com.alading.library.mvc.command.TAThreadPool"/>
+        <Communication destinationClassName="com.alading.library.mvc.command.TACommandQueue"/>
+    </Class>
+    <Class name="com.alading.library.mvc.command.TACommandThread"
+        x="1077" y="296">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Communication destinationClassName="com.alading.library.mvc.command.TACommandQueueManager"/>
+        <Communication destinationClassName="com.alading.library.mvc.command.TAICommand"/>
+    </Class>
+    <Class name="com.alading.library.mvc.command.TAICommand" x="622" y="36">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+    <Class name="com.alading.library.mvc.common.TARequest" x="50" y="18">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+    <Class name="com.alading.library.TAAppManager" x="-654" y="60">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+    <Class name="com.alading.library.mvc.common.TAResponse" x="51" y="149">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+    <Class name="com.alading.library.TAActivity" x="-22" y="687">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Communication destinationClassName="com.alading.library.mvc.common.TARequest"/>
+        <Communication destinationClassName="com.alading.library.TAAppManager"/>
+        <Communication destinationClassName="com.alading.library.TAApplication"/>
+    </Class>
+    <Class name="com.alading.library.mvc.controller.ActivityStackInfo"
+        x="-192" y="274">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Association
+            destinationClassName="com.alading.library.mvc.common.TAResponse"
+            endpointName="response" kind="Simple"/>
+        <Association
+            destinationClassName="com.alading.library.mvc.common.TARequest"
+            endpointName="request" kind="Simple"/>
+    </Class>
+    <Class name="com.alading.library.mvc.command.TAIdentityCommand"
+        x="607" y="161">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="com.alading.library.mvc.command.TACommand"/>
+        <Communication destinationClassName="com.alading.library.mvc.command.TACommand"/>
+        <Communication destinationClassName="com.alading.library.mvc.command.TABaseCommand"/>
+        <Communication destinationClassName="com.alading.library.mvc.common.TAResponse"/>
+    </Class>
+</ClassDiagram>

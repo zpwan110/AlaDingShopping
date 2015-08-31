@@ -1,0 +1,24 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/dot"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:padding="10dp"
+    android:orientation="horizontal">
+   <TextView
+       android:layout_weight="1"
+       android:id="@+id/tvTitle"
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:gravity="center_vertical"
+       android:textColor="@color/gray"
+       android:text="品牌"/>
+   <TextView
+       android:id="@+id/tvValue"
+       android:layout_weight="1"
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:gravity="center_vertical"
+       android:text="品牌"
+       android:textColor="@color/black"
+       />
+</LinearLayout>
