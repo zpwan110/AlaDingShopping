@@ -58,7 +58,6 @@ public class GlobalSaleAdapter extends BaseAdapter {
             view = inflater.inflate(R.layout.home_global_sale_item, null);
             holder = new ViewHolder();
             holder.global_img = (ImageView) view.findViewById(R.id.global_img_spike);
-            holder.mobile_name = (TextView) view.findViewById(R.id.mobile_name);
             holder.mobile_name_prcie = (TextView) view.findViewById(R.id.mobile_name_prcie);
             holder.mobile_name_prcie_d = (TextView) view.findViewById(R.id.mobile_name_prcie_d);
             holder.mobile_name_referencePrice = (TextView) view.findViewById(R.id.mobile_name_referencePrice);
@@ -66,19 +65,18 @@ public class GlobalSaleAdapter extends BaseAdapter {
         } else {
             holder = (ViewHolder) view.getTag();
         }
-        LoaderImage.loadPhoto(HttpServerPort.PUBLIC_IMG + _list.get(i).getProduct().getIcon(), holder.global_img);
-        holder.mobile_name.setText(_list.get(i).getProduct().getName());
-        holder.mobile_name_prcie.setText(String.format("¥%s", String.valueOf(_list.get(i).getProduct().getPrice())));
-        Double discount = (Double) _list.get(i).getProduct().getPrice() / (Double) _list.get(i).getProduct().getReferencePrice() * 10;
+        LoaderImage.loadPhoto(HttpServerPort.PUBLIC_IMG + _list.get(i).getProduct().getFlashSaleIcon(), holder.global_img);
+        holder.mobile_name_prcie.setText(String.format("¥%s", String.valueOf(_list.get(i).getSalePrice())));
+        Double discount = (Double) _list.get(i).getSalePrice() / (Double) _list.get(i).getProduct().getPrice() * 10;
         holder.mobile_name_prcie_d.setText(new BigDecimal(discount).setScale(1, BigDecimal.ROUND_HALF_UP) + " 折");
-        holder.mobile_name_referencePrice.setText(String.format("¥%s", String.valueOf(_list.get(i).getProduct().getReferencePrice())));
+        holder.mobile_name_referencePrice.setText(String.format("¥%s", String.valueOf(_list.get(i).getProduct().getPrice())));
         holder.mobile_name_referencePrice.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);
 
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent =new Intent(context, ProductDetailsActivity.class);
-                intent.putExtra("productId",_list.get(i).getFid());
+                intent.putExtra("productId",_list.get(i).getProduct().getPid()+"");
                 context.startActivity(intent);
             }
         });
@@ -88,7 +86,6 @@ public class GlobalSaleAdapter extends BaseAdapter {
 
     class ViewHolder {
         ImageView global_img;
-        TextView mobile_name;
         TextView mobile_name_prcie;
         TextView mobile_name_prcie_d;
         TextView mobile_name_referencePrice;

@@ -62,7 +62,7 @@ public class EntranceSaleAdapter extends BaseAdapter {
             viewHolder = (ViewHolder) convertView.getTag();
         }
         LoaderImage.loadPhoto(
-                HttpServerPort.PUBLIC_IMG +_list.get(i).getIcon(),
+                HttpServerPort.PUBLIC_IMG +_list.get(i).getIndexIcon(),
                 viewHolder.imageView);
         viewHolder.textView.setText(/*_list.get(i).getName()*/ "");
         convertView.setOnClickListener(new View.OnClickListener() {
@@ -71,6 +71,7 @@ public class EntranceSaleAdapter extends BaseAdapter {
                 Intent intent = new Intent();
                 intent.setClass(context, WebViewActivity.class);
                 intent.putExtra("weburl",_list.get(i).getInfo());
+                intent.putExtra("webtitle",_list.get(i).getName());
                 context.startActivity(intent);
             }
         });

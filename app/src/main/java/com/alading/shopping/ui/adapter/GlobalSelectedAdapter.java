@@ -1,6 +1,7 @@
 package com.alading.shopping.ui.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Paint;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +19,7 @@ import com.alading.shopping.R;
 import com.alading.shopping.common.util.LoaderImage;
 import com.alading.shopping.modle.bean.Product;
 import com.alading.shopping.modle.constant.HttpServerPort;
+import com.alading.shopping.ui.activity.ProductDetailsActivity;
 
 /**
  * Created by Administrator on 2015/8/27.
@@ -49,7 +51,7 @@ public class GlobalSelectedAdapter extends BaseAdapter implements Observer {
     }
 
     @Override
-    public View getView(int i, View view, ViewGroup viewGroup) {
+    public View getView(final int i, View view, ViewGroup viewGroup) {
         ViewHolder holder;
         if (view == null){
             view = inflater.inflate(R.layout.home_global_selected_item,null);
@@ -77,7 +79,14 @@ public class GlobalSelectedAdapter extends BaseAdapter implements Observer {
         holder.global_Price_d.setText(new BigDecimal(discount).setScale(1, BigDecimal.ROUND_HALF_UP) + " 折");
         holder.global_ReferencePrice.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG );
         holder.global_ReferencePrice.setText(new java.text.DecimalFormat("#.00").format(_list.get(i).getReferencePrice()) + "");
-
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent =new Intent(context, ProductDetailsActivity.class);
+                intent.putExtra("productId",_list.get(i).getPid()+"");
+                context.startActivity(intent);
+            }
+        });
         return view;
     }
 

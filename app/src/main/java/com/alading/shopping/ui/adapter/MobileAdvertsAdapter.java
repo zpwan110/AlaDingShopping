@@ -64,6 +64,7 @@ public class MobileAdvertsAdapter extends BaseAdapter{
                 Intent intent = new Intent();
                 intent.setClass(context, WebViewActivity.class);
                 intent.putExtra("weburl",_list.get(i).getContent());
+                intent.putExtra("webtitle","百度一下");
                 context.startActivity(intent);
             }
         });

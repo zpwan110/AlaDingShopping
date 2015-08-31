@@ -50,7 +50,7 @@ public class WebViewActivity extends BaseActivity implements View.OnClickListene
         actionbar_Left = (TextView) findViewById(R.id.back_title);
         actionbar_Right = (ImageView) findViewById(R.id.actionbar_right);
         actionbar_Left.setVisibility(View.VISIBLE);
-        actionbar_Left.setText(R.string.index_main);
+        actionbar_Left.setText("");
         actionbar_Right.setImageResource(R.drawable.share);
         actionbar_Left.setOnClickListener(this);
         actionbar_Right.setOnClickListener(this);

@@ -32,6 +32,7 @@ import java.io.Serializable;
 import java.util.List;
 
 import com.alading.shopping.R;
+import com.alading.shopping.ui.fragment.IndexFragment;
 
 /**
  * 商品详情
@@ -41,7 +42,6 @@ public class ProductDetailsActivity extends BaseActivity implements View.OnClick
 
     private static final String TAG = ProductDetailsActivity.class.getSimpleName();
     private final static int AD_ONCLICK = 0X44;//图片点击节点
-
 //    private PopupWindow popupWindow;
     /**
      * 注解加载主页界面
@@ -88,12 +88,10 @@ public class ProductDetailsActivity extends BaseActivity implements View.OnClick
     /**
      * 属性
      **/
-    private int mPid;//商品号
     public static ProductDetails mProductDetails;//商品详情实例
     private ProductDetailsActivity mContext;//上下文
     private String mProcurementLocation;//采购地点
     private int mDeliveryType;//	发货类型
-    private int mPfid;//商品Id
     private String orginPrice;//参考价
     private int ADDORREDUCE = 1;//商品数量
     private HttpResponseHandler requstHandler;
@@ -105,13 +103,20 @@ public class ProductDetailsActivity extends BaseActivity implements View.OnClick
     private RelativeLayout llJoin;
     private LinearLayout ll_xuangou_num;
     private Intent intent;
+    private View timeInfo;
+    private TextView proPrice;
+    private TextView proDomePrice;
+    private TextView proEndTime;
+    private View noTime;
+    private String mTagId;
+    private String mWebUrl;
 
     @Override
     protected void onAfterOnCreate(Bundle savedInstanceState) {
         super.onAfterOnCreate(savedInstanceState);
         setContentView(R.layout.activity_product_details);
         requstHandler = new HttpResponseHandler(this, this);
-        mPid = getIntent().getIntExtra("productId", 0);
+        mTagId = getIntent().getStringExtra("productId");
         mContext = this;
         initActionBar();
         initView();
@@ -139,15 +144,15 @@ public class ProductDetailsActivity extends BaseActivity implements View.OnClick
         linSpecial = (LinearLayout) findViewById(R.id.special_index);
         ll_xuangou_num = (LinearLayout)findViewById(R.id.ll_xuangou_num);
 
+
         tvWarehouse = (TextView) findViewById(R.id.tvWarehouse);
         ivCountry = (ImageView) findViewById(R.id.ivCountry);
         tvProName = (TextView) findViewById(R.id.tvProName);
-        tvProPrice = (TextView) findViewById(R.id.tvProPrice);
-        tvAlaPrice = (TextView) findViewById(R.id.tvAlaPrice);
-        tvDomPrice = (TextView) findViewById(R.id.tvDomPrice);
         shopcar_num = (TextView) findViewById(R.id.shopcar_num);
         ll_bottom = (LinearLayout) findViewById(R.id.ll_purchase);
         initPopupWindow();
+        initNoTime();
+        initTimeinfo();
         initClick();
     }
 
@@ -163,7 +168,18 @@ public class ProductDetailsActivity extends BaseActivity implements View.OnClick
         TextView title = (TextView) findViewById(R.id.actionbar_title);
         title.setText(this.getResources().getString(R.string.product));
     }
-
+    private void initNoTime(){
+        noTime = (View)findViewById(R.id.noTime);
+        tvProPrice = (TextView) findViewById(R.id.tvProPrice);
+        tvAlaPrice = (TextView) findViewById(R.id.tvAlaPrice);
+        tvDomPrice = (TextView) findViewById(R.id.tvDomPrice);
+    }
+    private void initTimeinfo(){
+        timeInfo = (View)findViewById(R.id.timeInfo);
+        proPrice = (TextView) timeInfo.findViewById(R.id.tvEndPrice);
+        proDomePrice = (TextView) timeInfo.findViewById(R.id.tvDomePrice);
+        proEndTime = (TextView)timeInfo.findViewById(R.id.tvEndTime);
+    }
 
     private void initPopupWindow() {
         View contentView = LayoutInflater.from(ProductDetailsActivity.this).inflate(R.layout.product_shop_purchase, null);
@@ -205,6 +221,9 @@ public class ProductDetailsActivity extends BaseActivity implements View.OnClick
     public void onClick(View v) {
 
         switch (v.getId()) {
+            case R.id.back_title:
+                finish();
+                break;
             case R.id.shopping_car:
                 llJoin.setVisibility(View.VISIBLE);
                 btnConfirBuy.setText("确认加入");
@@ -269,7 +288,7 @@ public class ProductDetailsActivity extends BaseActivity implements View.OnClick
                     return;
                 }
                  intent =new Intent(mContext, RatingActivity.class);
-                intent.putExtra("productId",mPid);
+                intent.putExtra("productId",mTagId);
                 mContext.startActivity(intent);
                 break;
             case R.id.ll_view_product_details:
@@ -280,16 +299,25 @@ public class ProductDetailsActivity extends BaseActivity implements View.OnClick
                 Bundle mBundle = new Bundle();
                 mBundle.putParcelableArrayList(PAR_KEY,mProductDetails.getProductAttributes());
                 mBundle.putString("phototext",mProductDetails.getDetalis());
+                mBundle.putString("place",mProductDetails.getProduct().getProcurementLocation());
+                mBundle.putString("brand",mProductDetails.getProduct().getBrand());
                 intent.putExtra("productDetails",mBundle);
                 mContext.startActivity(intent);
                 break;
             case R.id.advertisement:
-                Intent intent = new Intent();
+                 intent = new Intent();
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("images", (Serializable) mProductDetails.getProductImgs());
                 bundle.putInt("image_index", (Integer) v.getTag());
                 intent.putExtras(bundle);
                 intent.setClass(mContext, ImagePagerActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.special_index:
+                 intent = new Intent();
+                intent.setClass(mContext, WebViewActivity.class);
+                intent.putExtra("weburl", IndexFragment.indexFirstLineUrl);
+                intent.putExtra("webtitle",mContext.getResources().getString(R.string.promise));
                 startActivity(intent);
                 break;
         }
@@ -300,7 +328,7 @@ public class ProductDetailsActivity extends BaseActivity implements View.OnClick
     private void startRequest() {
 //        showLoading();
         params = new RequestParams();
-        params.put("pid", String.valueOf(mPid));
+        params.put("pid", String.valueOf(mTagId));
         asyncHttpClient.post(HttpRequestUrl.USER_PRODUCTDETAILS, params, requstHandler);
     }
 
@@ -333,9 +361,21 @@ public class ProductDetailsActivity extends BaseActivity implements View.OnClick
             tvWarehouse.setText(mProductDetails.getProduct().getDeliveryInformation());//仓库名称
             LoaderImage.loadPhoto(HttpServerPort.PUBLIC_IMG + mProductDetails.getProduct().getProductOrigin().getIcon(), ivCountry);//国旗
             tvProName.setText(mProductDetails.getProduct().getName());//商品名称
-            tvProPrice.setText(String.valueOf(mProductDetails.getProduct().getPrice()));//商品价
-            tvAlaPrice.setText("阿拉原价" + String.valueOf(mProductDetails.getProduct().getOriginalPrice()));//阿拉原价
-            tvDomPrice.setText("(国内参考价)" + String.valueOf(mProductDetails.getProduct().getReferencePrice()));//参考价
+            if(mProductDetails.getTmInfo()!=null){
+                proPrice.setText(String.valueOf(mProductDetails.getTmInfo().getSalePrice()));//商品价
+                proEndTime.setText(String.valueOf(mProductDetails.getTmInfo().getDays()+"天"+String.valueOf(mProductDetails.getTmInfo().getHour()+"小时")+
+                        mProductDetails.getTmInfo().getMinute()+"分"+String.valueOf(mProductDetails.getTmInfo().getSecond()+"秒")));
+                proDomePrice.setText( String.valueOf(mProductDetails.getProduct().getReferencePrice()));//参考价
+                timeInfo.setVisibility(View.VISIBLE);
+                noTime.setVisibility(View.GONE);
+            }else{
+                tvProPrice.setText(String.valueOf(mProductDetails.getProduct().getPrice()));//商品价
+                tvAlaPrice.setText("阿拉原价" + String.valueOf(mProductDetails.getProduct().getOriginalPrice()));//阿拉原价
+                tvDomPrice.setText("(国内参考价)" + String.valueOf(mProductDetails.getProduct().getReferencePrice()));//参考价
+                noTime.setVisibility(View.VISIBLE);
+                timeInfo.setVisibility(View.GONE);
+            }
+
 
             tvSelected.setText("1");//已选数量
             String destination = mContext.getResources().getString(R.string.destination);

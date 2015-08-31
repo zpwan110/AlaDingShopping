@@ -59,7 +59,7 @@ public class IndexFragment extends BaseFragment implements View.OnClickListener,
     private int flag_load_more = 1;//页码
 
     private int pageSize = 1;//每页数量
-    private String indexFirstLineUrl;//索引首页
+    public static String indexFirstLineUrl;//索引首页
 
     private List<HomeIndexAdverts>  bannerAdverts = new ArrayList<HomeIndexAdverts>();
     private List<HomeMobileAdverts> mobileAdvertsList =new ArrayList<HomeMobileAdverts>();
@@ -196,6 +196,7 @@ public class IndexFragment extends BaseFragment implements View.OnClickListener,
                     Intent intent = new Intent();
                     intent.setClass(mContext, WebViewActivity.class);
                     intent.putExtra("weburl",indexFirstLineUrl);
+                    intent.putExtra("webtitle",mContext.getResources().getString(R.string.promise));
                     startActivity(intent);
                 }
                 break;

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="80dp"
+    android:orientation="vertical"
+    android:background="@drawable/special_sale_bk" >
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical"
+        android:background="@color/selector_chat_pressed"
+        android:padding="10dp">
+    <ImageView
+        android:id="@+id/ivEnd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:src="@drawable/special_sale"
+        android:scaleType="center"/>
+        <TextView
+            android:id="@+id/tvEnd"
+            android:layout_toRightOf="@+id/ivEnd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="距结束" />
+        <TextView
+            android:id="@+id/tvEndTime"
+            android:paddingLeft="15dp"
+            android:layout_alignTop="@+id/tvEnd"
+            android:layout_toRightOf="@+id/tvEnd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="02天23时32分52秒" />
+        <TextView
+            android:id="@+id/tvEndYuan"
+            android:layout_toRightOf="@+id/ivEnd"
+            android:layout_alignParentBottom="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="￥"
+            android:textColor="@color/red_money"/>
+        <TextView
+            android:id="@+id/tvEndPrice"
+            android:layout_toRightOf="@+id/tvEndYuan"
+            android:layout_alignBottom="@+id/ivEnd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="48.00"
+            android:textSize="@dimen/text_size_18sp"
+            android:textColor="@color/red_money"/>
+          <TextView
+            android:id="@+id/tvDomestic"
+            android:layout_toRightOf="@+id/tvEndPrice"
+              android:layout_alignBottom="@+id/ivEnd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+              android:paddingLeft="15dp"
+            android:text="国内参考价"/>
+        <TextView
+            android:id="@+id/tvDomePrice"
+            android:layout_toRightOf="@+id/tvDomestic"
+            android:layout_alignBottom="@+id/tvEndPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="5dp"
+            android:text="￥88.0"/>
+    </RelativeLayout>
+
+</LinearLayout>

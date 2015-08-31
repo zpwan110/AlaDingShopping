@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
 
+import com.alading.library.util.extend.draw.DensityUtils;
 import com.alading.shopping.R;
 import com.alading.shopping.common.util.LoaderImage;
 import com.alading.shopping.modle.bean.ProductDetails;
@@ -70,6 +71,7 @@ public class ImagePagerActivity extends Activity {
         public View instantiateItem(ViewGroup container, int position) {
             PhotoView photoView = new PhotoView(container.getContext());
             LoaderImage.loadPhoto(HttpServerPort.PUBLIC_IMG+images.get(position).getImg(),photoView);
+            photoView.setPadding(DensityUtils.dipTopx(mContext,10),0,DensityUtils.dipTopx(mContext,10),0);
             container.addView(photoView, LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
             return photoView;
         }

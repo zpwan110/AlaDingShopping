@@ -10,7 +10,7 @@
         android:layout_height="85dp"
         android:layout_centerHorizontal="true"
         android:src="@drawable/classify_load"
-        android:scaleType="fitXY"/>
+        android:scaleType="centerCrop"/>
 
     <TextView
         android:id="@+id/itemName"

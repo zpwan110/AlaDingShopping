@@ -27,7 +27,7 @@
     <color name="shopcar_text_color_red">#D22147</color>
     <color name="shopcar_text_color_bg">#FCF6DD</color>
     <color name="selector_chat_normal">#b21d3d</color>
-    <color name="selector_chat_pressed">#90b21d3d</color>
+    <color name="selector_chat_pressed">#30b21d3d</color>
     <color name="slightgray">#ffcccccc</color>
     <!-- 灰色背景 -->
     <color name="gary_bg">#dcdcdc</color>
@@ -97,5 +97,5 @@
 
     <!-- 蓝灰色-->
     <color name="blue_gray">#3e4156</color>
-    <color name="red_money">#ef6363</color>
+    <color name="red_money">#E41B23</color>
 </resources>

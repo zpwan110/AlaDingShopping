@@ -76,15 +76,15 @@ public class ProductDetails {
     }
 
     public class Other {
-        private int isMobile;//	是否手机端
+        private String isMobile;//	是否手机端
         private String otherInfo;//	其他信息	string
         private String url;//商品链接 http://115.231.183.42:8081/aladdin/mobile/share?pid=35
 
-        public int getIsMobile() {
+        public String getIsMobile() {
             return isMobile;
         }
 
-        public void setIsMobile(int isMobile) {
+        public void setIsMobile(String isMobile) {
             this.isMobile = isMobile;
         }
 

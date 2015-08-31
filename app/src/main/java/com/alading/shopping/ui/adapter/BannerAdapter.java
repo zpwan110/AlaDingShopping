@@ -15,6 +15,7 @@ import com.alading.shopping.common.util.LoaderImage;
 import com.alading.shopping.modle.bean.HomeIndexAdverts;
 import com.alading.shopping.modle.constant.HttpServerPort;
 import com.alading.shopping.ui.activity.ProductDetailsActivity;
+import com.alading.shopping.ui.activity.WebViewActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,6 +28,7 @@ public class BannerAdapter extends PagerAdapter {
     private List<View> views = new ArrayList<View>();
     private List<HomeIndexAdverts> bannerList;
     private Context mContext;
+    private Intent intent;
 
     public BannerAdapter(List<HomeIndexAdverts> bannerList ,Context context) {
         super();
@@ -74,9 +76,22 @@ public class BannerAdapter extends PagerAdapter {
 //                }else {
 //                    MainWebActivity.callMe(getActivity(),home_IndexAdverts_data.get(index).getContent(),"商品详情");
 //                }
-                Intent intent =new Intent(mContext, ProductDetailsActivity.class);
-                intent.putExtra("productId",bannerHomeIndex.getAid());
-                mContext.startActivity(intent);
+
+                switch (bannerHomeIndex.getType()){
+                    case 0:
+                    case 1:
+                        intent =new Intent(mContext, ProductDetailsActivity.class);
+                        intent.putExtra("productId", bannerHomeIndex.getContent() + "");
+                        mContext.startActivity(intent);
+                        break;
+                    case 2:
+                        intent.setClass(mContext, WebViewActivity.class);
+                        intent.putExtra("weburl",bannerHomeIndex.getContent()+"");
+                        intent.putExtra("webtitle","百度一下");
+                        mContext.startActivity(intent);
+                        break;
+                }
+
             }
         });
         }

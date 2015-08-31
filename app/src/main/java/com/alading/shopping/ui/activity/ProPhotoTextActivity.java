@@ -1,6 +1,7 @@
 package com.alading.shopping.ui.activity;
 
 
+import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.BitmapFactory;
 
@@ -22,6 +23,8 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import com.alading.shopping.AladingApplication;
 import com.alading.shopping.R;
 import com.alading.shopping.modle.bean.ProductAttributes;
 import com.alading.shopping.ui.base.BaseActivity;
@@ -54,12 +57,18 @@ public class ProPhotoTextActivity extends BaseActivity implements OnClickListene
 	private int bmpW;// 动画图片宽度
 	private int offset;
 	private ArrayList<View> listView;
+	private TextView tvPlace;
+	private TextView tvBrand;
+	private String proPlace;
+	private String proBrand;
 
 	@Override
 	protected void onPreOnCreate(Bundle savedInstanceState) {
 		super.onPreOnCreate(savedInstanceState);
 		Bundle mbundle= getIntent().getBundleExtra("productDetails");
 		phototext = mbundle.getString("phototext");
+		proPlace = mbundle.getString("place");
+		proBrand = mbundle.getString("brand");
 		paramList = mbundle.getParcelableArrayList(ProductDetailsActivity.PAR_KEY);
 		this.context = this;
 //		faq = getIntent().getStringExtra("faq");
@@ -79,24 +88,29 @@ public class ProPhotoTextActivity extends BaseActivity implements OnClickListene
 		TextView title = (TextView) findViewById(R.id.actionbar_title);
 		title.setText(this.getResources().getString(R.string.phototext));
 	}
+	@TargetApi(Build.VERSION_CODES.KITKAT)
 	private void initView(){
 		layoutInflater = LayoutInflater.from(ProPhotoTextActivity.this);
 		photoView = layoutInflater.inflate(R.layout.pro_photo, null);
 		webView = (WebView)photoView.findViewById(R.id.webViewPhoto);
+		webView.loadData(phototext, "text/html", "UTF-8");
 		webSettings = webView.getSettings();
 		webSettings.setDisplayZoomControls(false);
 		webSettings.setSupportZoom(true);
 		webSettings.setBuiltInZoomControls(true);
-//		webView.setInitialScale(100);
-		webSettings.setJavaScriptEnabled(true);
-		//扩大比例的缩放
-		webSettings.setUseWideViewPort(true);
-//自适应屏幕
 		webSettings.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN);
-		webSettings.setLoadWithOverviewMode(true);
-		webView.loadData(phototext, "text/html", "UTF-8");
+		webSettings.setJavaScriptEnabled(true);
+////		//扩大比例的缩放
+		webSettings.setUseWideViewPort(true);
+////		//自适应屏幕
+//		webSettings.setLoadWithOverviewMode(true);
+		webView.setInitialScale(100);
 		paramView = layoutInflater.inflate(R.layout.pro_param, null);
-		paramListView = (ListView)paramView.findViewById(R.id.paramListView);
+		paramListView = (ListView)paramView.findViewById(R.id.paramList);
+		tvPlace = (TextView)paramView.findViewById(R.id.tvPlace);
+		tvBrand = (TextView)paramView.findViewById(R.id.tvBrand);
+		tvPlace.setText(proPlace+"");
+		tvBrand.setText(proBrand+"");
 		myAdapter = new ParamAdapter(paramList,this);
 		paramListView.setAdapter(myAdapter);
 		faqView = layoutInflater.inflate(R.layout.pro_faq, null);
@@ -138,6 +152,15 @@ public class ProPhotoTextActivity extends BaseActivity implements OnClickListene
 			switch (v.getId()){
 				case R.id.back_title:
 					finish();
+					break;
+				case R.id.tv_Photo:
+					mPager.setCurrentItem(0);
+					break;
+				case R.id.tv_Parma:
+					mPager.setCurrentItem(1);
+					break;
+				case R.id.tv_FAQ:
+					mPager.setCurrentItem(2);
 					break;
 			}
 	}
